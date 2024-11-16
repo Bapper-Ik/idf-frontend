@@ -81,10 +81,10 @@ const LandingPage = () => {
     const fetchNews = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8000/news/get_recent_news?limit=3"
-        ); // Ensure the API URL is correct
+          `${process.env.NGROK_URL}/news/get_recent_news?limit=3`
+        );
         const data = await response.json();
-        setNews(data); // Assuming the API returns the news articles as an array
+        setNews(data);
       } catch (error) {
         console.error("Error fetching news:", error);
       }

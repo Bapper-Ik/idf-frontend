@@ -7,7 +7,9 @@ const Events = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://0.0.0.0:8000/events/all_events");
+        const response = await fetch(
+          "https://87bd-197-210-78-81.ngrok-free.app/events/all_events"
+        );
         if (response.status === 404) {
           throw new Error("No event is available!");
         }

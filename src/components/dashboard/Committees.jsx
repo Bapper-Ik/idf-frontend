@@ -21,7 +21,7 @@ const Committees = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/committee/all_committee")
+      .get("https://0.0.0.0:8000/committee/all_committee")
       .then((response) => setCommittees(response.data))
       .catch((error) => setError(error));
   }, []);
@@ -50,7 +50,7 @@ const Committees = () => {
   const handleDelete = (id) => {
     axios
       .delete(
-        `http://localhost:8000/admin/dashboard/committee/delete_committee/${id}`
+        `https://0.0.0.0:8000/admin/dashboard/committee/delete_committee/${id}`
       )
       .then((response) => {
         setCommittees(committees.filter((category) => category.id !== id));
@@ -63,7 +63,7 @@ const Committees = () => {
     if (isEdit) {
       axios
         .put(
-          `http://0.0.0.0:8000/admin/dashboard/committee/update_committee/${committeeId}`,
+          `https://0.0.0.0:8000/admin/dashboard/committee/update_committee/${committeeId}`,
           committeeData
         )
         .then((response) => {
@@ -78,7 +78,7 @@ const Committees = () => {
     } else {
       axios
         .post(
-          "http://localhost:8000/admin/dashboard/add_committee",
+          "https://0.0.0.0:8000/admin/dashboard/add_committee",
           committeeData
         )
         .then((response) => {

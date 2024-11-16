@@ -7,7 +7,9 @@ const Gallery = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await fetch("http://0.0.0.0:8000/gallery/all_images");
+        const response = await fetch(
+          `${process.env.NGROK_URL}/gallery/all_images`
+        );
         if (response.status === 404) {
           throw new Error("No image is available!");
         }
@@ -37,7 +39,7 @@ const Gallery = () => {
           >
             {image.id ? (
               <img
-                src={`http://0.0.0.0:8000/images/${image.id}`}
+                src={`https://87bd-197-210-78-81.ngrok-free.app/images/${image.id}`}
                 alt={image.title}
                 className="w-full h-auto object-contain"
               />

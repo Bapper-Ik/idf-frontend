@@ -23,12 +23,12 @@ const VideoList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/taalim/all_ta_alims")
+      .get("https://0.0.0.0:8000/taalim/all_ta_alims")
       .then((response) => setVideos(response.data))
       .catch((error) => console.error(error));
 
     axios
-      .get("http://localhost:8000/taalim/categories/all_categories")
+      .get("https://0.0.0.0:8000/taalim/categories/all_categories")
       .then((response) => setCategories(response.data))
       .catch((error) => console.error(error));
   }, []);
@@ -56,7 +56,7 @@ const VideoList = () => {
   const handleDelete = (id) => {
     axios
       .delete(
-        `http://localhost:8000/admin/dashboard/taalim/delete_ta_alim/${id}`
+        `https://0.0.0.0:8000/admin/dashboard/taalim/delete_ta_alim/${id}`
       )
       .then((response) => {
         setVideos(videos.filter((video) => video.id !== id));
@@ -75,7 +75,7 @@ const VideoList = () => {
     if (isEdit) {
       axios
         .put(
-          `http://localhost:8000/admin/dashboard/taalim/update_taalim/${videoId}`,
+          `https://0.0.0.0:8000/admin/dashboard/taalim/update_taalim/${videoId}`,
           videoData
         )
         .then((response) => {
@@ -96,7 +96,7 @@ const VideoList = () => {
     } else {
       axios
         .post(
-          "http://localhost:8000/admin/dashboard/ta_alim/add_ta_alim",
+          "https://0.0.0.0:8000/admin/dashboard/ta_alim/add_ta_alim",
           videoData
         )
         .then((response) => {
@@ -172,7 +172,9 @@ const VideoList = () => {
                 <h2 className="text-2xl font-bold mb-4 flex justify-between">
                   {isEdit ? "Edit Video" : "Create Video"}
                 </h2>
-                {error && <p className="text-red-500 text-center">{error.message}</p>}
+                {error && (
+                  <p className="text-red-500 text-center">{error.message}</p>
+                )}
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
                     <label

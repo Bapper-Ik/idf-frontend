@@ -20,7 +20,7 @@ const CategoryList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/taalim/categories/all_categories")
+      .get("https://0.0.0.0:8000/taalim/categories/all_categories")
       .then((response) => setCategories(response.data))
       .catch((error) => setError(error));
   }, []);
@@ -45,7 +45,7 @@ const CategoryList = () => {
   const handleDelete = (id) => {
     axios
       .delete(
-        `http://localhost:8000/admin/dashboard/category/delete_category/${id}`
+        `https://0.0.0.0:8000/admin/dashboard/category/delete_category/${id}`
       )
       .then((response) => {
         setCategories(categories.filter((category) => category.id !== id));
@@ -58,7 +58,7 @@ const CategoryList = () => {
     if (isEdit) {
       axios
         .put(
-          `http://0.0.0.0:8000/admin/dashboard/category/update_category/${categoryId}`,
+          `https://0.0.0.0:8000/admin/dashboard/category/update_category/${categoryId}`,
           categoryData
         )
         .then((response) => {
@@ -73,7 +73,7 @@ const CategoryList = () => {
     } else {
       axios
         .post(
-          "http://localhost:8000/admin/dashboard/category/add_category",
+          "https://0.0.0.0:8000/admin/dashboard/category/add_category",
           categoryData
         )
         .then((response) => {

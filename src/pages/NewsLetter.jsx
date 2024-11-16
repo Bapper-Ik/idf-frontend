@@ -7,7 +7,9 @@ const News = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/news/all_news");
+        const response = await fetch(
+          "https://87bd-197-210-78-81.ngrok-free.app/news/all_news"
+        );
         if (response.status === 404) {
           throw new Error("No news is available!");
         }
