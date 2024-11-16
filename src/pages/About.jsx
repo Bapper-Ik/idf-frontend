@@ -6,9 +6,9 @@ const AboutUs = () => {
     <div>
       {/* Hero Section */}
       <section className="bg-gray-900 py-16">
-        <div className="container mx-auto text-center">
+        <div className="mx-auto text-center">
           <h2 className="text-4xl font-bold text-white mb-4">About Us</h2>
-          <p className="text-3xl text-green-300 mb-8 text-center">
+          <p className="texr-lg sm:text-3xl text-green-300 px-3 mb-8 text-center">
             The nature of IKARA DA'AWA FOUNDATION is a non-profitable and
             political organization, but purely religious, humanitarian and
             charitable in nature
@@ -26,7 +26,7 @@ const AboutUs = () => {
       <section className="bg-gray-100 py-16">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6 mx-3">
               <h3 className="text-2xl font-bold underline pb-2 text-green-800">
                 Our Mission
               </h3>
@@ -66,11 +66,11 @@ const AboutUs = () => {
                 </li>
               </ul>
             </div>
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6 mx-3">
               <h3 className="text-2xl font-bold underline pb-4 text-green-800">
                 Our Vision
               </h3>
-              <p className="text-gray-900 text-xl leading-10">
+              <p className="text-gray-900 text-lg leading-10">
                 "To illuminate the world with the light of Islam, empowering
                 individuals and communities to live a purposeful life, guided by
                 the Quran and the teachings of the Prophet Muhammad (peace be
@@ -85,12 +85,12 @@ const AboutUs = () => {
       {/* Team Members Section */}
       <section className="bg-gray-100 py-16">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center">
+          <h2 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-8 text-center">
             Meet Our Founders
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Team Member 1 */}
-            <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+            <div className="bg-white rounded-lg shadow-lg p-6 text-center mx-4 sm:mx-0">
               <img
                 src="/idf-1-removebg-preview.png"
                 alt="Team Member 1"
@@ -103,7 +103,7 @@ const AboutUs = () => {
             </div>
 
             {/* Team Member 2 */}
-            <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+            <div className="bg-white rounded-lg shadow-lg p-6 text-center mx-4 sm:mx-0">
               <img
                 src="/idf-4-removebg-preview.png"
                 alt="Team Member 2"
@@ -116,7 +116,7 @@ const AboutUs = () => {
             </div>
 
             {/* Team Member 3 */}
-            <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+            <div className="bg-white rounded-lg shadow-lg p-6 text-center mx-4 sm:mx-0">
               <img
                 src="/idf-3-removebg-preview.png"
                 alt="Team Member 3"
@@ -127,7 +127,7 @@ const AboutUs = () => {
             </div>
 
             {/* Team Member 4 */}
-            <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+            <div className="bg-white rounded-lg shadow-lg p-6 text-center mx-4 sm:mx-0">
               <img
                 src="/idf-5-removebg-preview.png"
                 alt="Team Member 4"
@@ -143,12 +143,12 @@ const AboutUs = () => {
       {/* Testimonials Section */}
       <section className="bg-gray-100 py-16">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center">
+          <h2 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-8 text-center">
             What People are Saying
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Testimonial 1 */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6 mx-4 sm:mx-0">
               <blockquote className="text-lg text-gray-600">
                 "Ikara Da'awah Foundation has been instrumental in supporting
                 our community's educational needs."
@@ -159,7 +159,7 @@ const AboutUs = () => {
             </div>
 
             {/* Testimonial 2 */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6 mx-4 sm:mx-0">
               <blockquote className="text-lg text-gray-600">
                 "Their dedication to spreading Islamic teachings is truly
                 inspiring."
@@ -170,7 +170,7 @@ const AboutUs = () => {
             </div>
 
             {/* Testimonial 3 */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-lg shadow-lg p-6 mx-4 sm:mx-0">
               <blockquote className="text-lg text-gray-600">
                 "We appreciate their commitment to supporting local charitable
                 initiatives."
@@ -192,10 +192,10 @@ const AboutUs = () => {
             serve the community.
           </p>
           <Link
-            to="/contact"
+            to="#"
             className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-full text-lg transition duration-300"
           >
-            Get Involved
+            Donate
           </Link>
         </div>
       </section>

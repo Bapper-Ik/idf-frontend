@@ -172,7 +172,7 @@ const VideoList = () => {
                 <h2 className="text-2xl font-bold mb-4 flex justify-between">
                   {isEdit ? "Edit Video" : "Create Video"}
                 </h2>
-                {error && <p className="text-red-500 text-center">{error}</p>}
+                {error && <p className="text-red-500 text-center">{error.message}</p>}
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
                     <label

@@ -23,7 +23,7 @@ const Committees = () => {
     axios
       .get("http://localhost:8000/committee/all_committee")
       .then((response) => setCommittees(response.data))
-      .catch((error) => console.error(error));
+      .catch((error) => setError(error));
   }, []);
 
   const handleCreate = () => {
@@ -55,7 +55,7 @@ const Committees = () => {
       .then((response) => {
         setCommittees(committees.filter((category) => category.id !== id));
       })
-      .catch((error) => console.error(error));
+      .catch((error) => setError(error));
   };
 
   const handleSubmit = (e) => {
@@ -74,7 +74,7 @@ const Committees = () => {
           );
           setShowModal(false);
         })
-        .catch((error) => console.error(error));
+        .catch((error) => setError(error));
     } else {
       axios
         .post(
@@ -154,7 +154,9 @@ const Committees = () => {
                 <h2 className="text-2xl font-bold mb-4">
                   {isEdit ? "Edit Committee" : "Create Committee"}
                 </h2>
-                {error && <p className="text-red-500 text-center">{error}</p>}
+                {error && (
+                  <p className="text-red-500 text-center">{error.message}</p>
+                )}
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
                     <label

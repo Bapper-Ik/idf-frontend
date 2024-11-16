@@ -45,7 +45,9 @@ const Login = () => {
           Admin Login
         </h2>
         {error && (
-          <p className="text-red-500 mb-4 text-sm font-medium">{error}</p>
+          <p className="text-red-500 mb-4 text-sm font-medium">
+            {error.message}
+          </p>
         )}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="mb-4">

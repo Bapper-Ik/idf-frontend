@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const extractYouTubeId = (url) => {
   const regex =
     /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=))([^&\n]{11})/;
   const match = url.match(regex);
-  return match ? match[1] : null; // Return the ID or null if not found
+  return match ? match[1] : null;
 };
 
 const VideoCategories = () => {
@@ -16,13 +17,12 @@ const VideoCategories = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch(
-          "http://0.0.0.0:8000/taalim/categories/all_categories"
+        const response = await axios.get(
+          "http://localhost:8000/taalim/categories/all_categories"
         );
-        const data = await response.json();
-        setCategories(data);
+        setCategories(response.data);
       } catch (error) {
-        console.error("Error fetching categories:", error);
+        setError(error.message);
       }
     };
     fetchCategories();
@@ -31,21 +31,14 @@ const VideoCategories = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       if (!selectedCategory) return;
+
       try {
-        const response = await fetch(
+        const response = await axios.get(
           `http://0.0.0.0:8000/taalim/${selectedCategory.id}/all_taalims`
         );
-        const data = await response.json();
-
-        if (isNaN(data.length)) {
-          setError("No videos available in this category!");
-        } else {
-          setVideos(data);
-          setError(null);
-        }
+        setVideos(response.data);
       } catch (error) {
-        console.error("Error fetching videos:", error);
-        setError("Failed to load videos!");
+        setError(error.message);
       }
     };
     fetchVideos();
@@ -53,11 +46,11 @@ const VideoCategories = () => {
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
-    setVideos([]); // Reset videos when changing categories
+    setVideos([]);
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="p-4 bg-gray-100">
       <h1 className="text-3xl font-bold text-center mb-8">Video Categories</h1>
 
       <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -76,9 +69,7 @@ const VideoCategories = () => {
         ))}
       </div>
 
-      {error ? (
-        <p className="text-red-500 text-2xl font-mono">{error}</p>
-      ) : (
+      {selectedCategory && (
         <div className="grid grid-cols-1 mb-10 mx-5 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {videos.length > 0 ? (
             videos.map((video) => {
@@ -86,7 +77,7 @@ const VideoCategories = () => {
               return (
                 <div
                   key={video.id}
-                  className="rounded-lg overflow-hidden shadow-lg"
+                  className="rounded-lg overflow-hidden shadow-lg transition-transform duration-400 hover:scale-110"
                 >
                   {youtubeId ? (
                     <iframe
@@ -114,7 +105,7 @@ const VideoCategories = () => {
             })
           ) : (
             <p className="text-gray-600 text-lg">
-              select category to explore videos
+              No videos available in "{selectedCategory.name}" category.
             </p>
           )}
         </div>

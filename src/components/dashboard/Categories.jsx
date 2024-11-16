@@ -22,7 +22,7 @@ const CategoryList = () => {
     axios
       .get("http://localhost:8000/taalim/categories/all_categories")
       .then((response) => setCategories(response.data))
-      .catch((error) => console.error(error));
+      .catch((error) => setError(error));
   }, []);
 
   const handleCreate = () => {
@@ -50,7 +50,7 @@ const CategoryList = () => {
       .then((response) => {
         setCategories(categories.filter((category) => category.id !== id));
       })
-      .catch((error) => console.error(error));
+      .catch((error) => setError(error));
   };
 
   const handleSubmit = (e) => {
@@ -69,7 +69,7 @@ const CategoryList = () => {
           );
           setShowModal(false);
         })
-        .catch((error) => console.error(error));
+        .catch((error) => setError(error));
     } else {
       axios
         .post(
@@ -145,7 +145,9 @@ const CategoryList = () => {
                 <h2 className="text-2xl font-bold mb-4">
                   {isEdit ? "Edit Category" : "Create Category"}
                 </h2>
-                {error && <p className="text-red-500 text-center">{error}</p>}
+                {error && (
+                  <p className="text-red-500 text-center">{error.message}</p>
+                )}
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
                     <label

@@ -8,8 +8,6 @@ const Images = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [uploading, setUploading] = useState(false);
-  const [image, setImage] = useState(null);
-  const [caption, setCaption] = useState("");
   const [error, setError] = useState(null);
 
   axios.defaults.headers.common[
@@ -56,8 +54,8 @@ const Images = () => {
     e.preventDefault();
     setUploading(true);
     const formData = new FormData();
-    formData.append("image", image);
-    formData.append("caption", caption);
+    formData.append("image", e.target.image.files[0]);
+    formData.append("caption", e.target.caption.value);
     axios
       .post("http://localhost:8000/admin/dashboard/add_images", formData, {
         headers: {
@@ -65,8 +63,7 @@ const Images = () => {
         },
       })
       .then((response) => {
-        setCaption("");
-        setImage(null);
+        setImages([...images, response.data]);
         setUploading(false);
       })
       .catch((error) => {
@@ -82,8 +79,8 @@ const Images = () => {
   const handleUpdate = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("image", image);
-    formData.append("caption", caption);
+    formData.append("image", e.target.image.files[0]);
+    formData.append("caption", e.target.caption.value);
     axios
       .put(
         `http://localhost:8000/admin/dashboard/gallery/update_image/${selectedImage.id}`,
@@ -117,20 +114,21 @@ const Images = () => {
         <DashboardSidebar />
         <div className="flex-1 p-10 overflow-scroll">
           <h1 className="text-3xl font-bold mb-4">Image Management</h1>
-          {error && <h4 className="text-red-500 text-center">{error}</h4>}
+          {error && (
+            <h4 className="text-red-500 text-center">{error.message}</h4>
+          )}
           <form onSubmit={handleUpload}>
-            <input
-              type="file"
-              onChange={(e) => {
-                setImage(e.target.files[0]);
-                setError(null);
-              }}
-              required
-            />
+            <label className="capitalize px-10 text-gray-600" htmlFor="image">
+              image
+            </label>
+            <input type="file" name="image" required />
+            <label className="px-10 text-gray-600" htmlFor="caption">
+              Caption
+            </label>
 
             <input
               type="text"
-              onChange={(e) => setCaption(e.target.value)}
+              name="caption"
               required
               className="shadow-md border-2 mr-10"
             />
@@ -189,8 +187,8 @@ const Images = () => {
                     </label>
                     <input
                       type="file"
+                      name="image"
                       id="image"
-                      onChange={(e) => setImage(e.target.files[0])}
                       required
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     />
@@ -204,8 +202,8 @@ const Images = () => {
                     </label>
                     <input
                       type="text"
+                      name="caption"
                       id="caption"
-                      onChange={(e) => setCaption(e.target.value)}
                       required
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     />

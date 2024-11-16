@@ -2,19 +2,33 @@ import React, { useEffect, useState } from "react";
 
 const News = () => {
   const [news, setNews] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:8000/news/all_news");
-      const data = await response.json();
-      setNews(data);
+      try {
+        const response = await fetch("http://localhost:8000/news/all_news");
+        if (response.status === 404) {
+          throw new Error("No news is available!");
+        }
+
+        const data = await response.json();
+        setNews(data);
+      } catch (error) {
+        setError(error);
+      }
     };
 
     fetchData();
   }, []);
 
   return (
-    <div className="p-8 bg-gray-100">
+    <div className="p-8 bg-gray-100 overflow-auto">
+      {error && (
+        <div className="bg-gray-200 shadow-md font-bold text-red-500  p-4 text-center rounded-lg w-max mx-auto mb-10">
+          {error.message}
+        </div>
+      )}
       <h2 className="text-4xl font-bold text-center mb-8">News Letters</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {news.map((item) => (

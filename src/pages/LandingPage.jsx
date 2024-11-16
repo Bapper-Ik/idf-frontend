@@ -50,7 +50,7 @@ const LandingPage = () => {
       buttonLink: "/videos",
     },
     {
-      id: 5,
+      id: 6,
       title: "Islamic Educational Videos",
       description:
         "Explore our collection of educational videos categorized for easy learning.",
@@ -59,12 +59,11 @@ const LandingPage = () => {
       buttonLink: "/videos",
     },
     {
-      id: 6,
-
+      id: 7,
       image: "/media.jpg",
     },
     {
-      id: 7,
+      id: 8,
       title: "Islamic Educational Videos",
       description:
         "Explore our collection of educational videos categorized for easy learning.",
@@ -115,17 +114,19 @@ const LandingPage = () => {
   return (
     <div>
       {/* Hero Slider Section */}
-      <section className="relative h-screen">
+      <section className="relative h-screen bg-gray-200">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
             className={`${
               index === currentSlide ? "block" : "hidden"
-            } w-full h-full bg-contain bg-no-repeat bg-center`}
-            style={{ backgroundImage: `url(${slide.image})` }}
+            } w-4/5 mx-auto p-0 m-0 h-full bg-origin-content bg-contain bg-no-repeat bg-center`}
+            style={{
+              backgroundImage: `url(${slide.image})`,
+            }}
           >
-            <div className="flex flex-col justify-center items-center h-full bg-black bg-opacity-50 text-center px-5">
-              <h1 className="text-4xl md:text-5xl text-white font-bold mb-4">
+            <div className="flex flex-col justify-center items-center h-full bg-green-900 bg-opacity-20 text-center px-5">
+              <h1 className="hidden md:block text-4xl md:text-5xl text-white font-bold mb-4">
                 {slide.title}
               </h1>
               <p className="text-lg md:text-xl text-white mb-8 max-w-2xl">
@@ -133,7 +134,9 @@ const LandingPage = () => {
               </p>
               <Link
                 to={slide.buttonLink}
-                className="bg-green-900 hover:bg-green-500 text-white px-6 py-3 rounded-full text-lg md:text-xl transition duration-300"
+                className={`${
+                  !slide.buttonText ? "hidden" : ""
+                } bg-green-900 hover:bg-green-500 text-white px-6 py-3 rounded-full text-lg md:text-xl transition duration-300`}
               >
                 {slide.buttonText}
               </Link>
@@ -143,13 +146,13 @@ const LandingPage = () => {
 
         {/* Slide Navigation Controls */}
         <button
-          className="absolute left-5 top-1/2 transform -translate-y-1/2 bg-green-700 hover:bg-green-500 text-white p-3 rounded-full"
+          className="hidden md:block absolute left-5 top-1/2 transform -translate-y-1/2 bg-green-700 hover:bg-green-500 text-white p-3 rounded-full"
           onClick={prevSlide}
         >
           &#8592; {/* Left arrow */}
         </button>
         <button
-          className="absolute right-5 top-1/2 transform -translate-y-1/2 bg-green-700 hover:bg-green-800 text-white p-3 rounded-full"
+          className="hidden md:block absolute right-5 top-1/2 transform -translate-y-1/2 bg-green-700 hover:bg-green-800 text-white p-3 rounded-full"
           onClick={nextSlide}
         >
           &#8594; {/* Right arrow */}
@@ -159,26 +162,19 @@ const LandingPage = () => {
       {/* Mission and Vision Section */}
 
       <section>
-        <div className="bg-green-900 p-10 my-20 shadow-lg flex">
+        <div className="bg-green-900 my-20 shadow-lg flex">
           <div className="hidden sm:block sm:flex sm:flex-1 items-center justify-center my-auto h-auto">
             <img src="/idf-logo.png" alt="banner" width={400} height={400} />
           </div>
-          <div className="bg-gray-100 w-full sm:w-1/2 flex-initial p-10 text-center rounded-lg">
+          <div className="bg-gray-100 w-full sm:w-1/2 flex-initial p-10  m-4 sm:m-10 text-center rounded-lg">
             <h4 className="underline font-mono font-bold text-2xl">
               Introduction
             </h4>
             <p className="leading-loose break-normal text-xl">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod,
-              facilis? Nobis explicabo fugit labore eaque? Ullam, officiis earum
-              ipsa soluta dignissimos fugiat laboriosam fugit hic maxime
-              consectetur similique excepturi eos! Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Sint neque, corrupti beatae, dolorum
-              fuga, assumenda incidunt minima nobis consectetur suscipit
-              adipisci porro corporis impedit nam reprehenderit animi veritatis
-              deleniti enim? Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Alias beatae deleniti doloribus provident corporis autem
-              veritatis ut dolorum temporibus repellendus nobis possimus eum
-              optio consequatur, similique magnam vero sunt.
+              Ikara Da'awah Foundation is a non-profit organization committed to
+              sharing the beauty and wisdom of Islam. Our mission is to inspire,
+              educate, and empower individuals to embrace the Islamic faith,
+              cultivate moral excellence, and contribute positively to society
             </p>
           </div>
         </div>

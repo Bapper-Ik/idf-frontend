@@ -112,7 +112,7 @@ const Feedback = () => {
           </button>
 
           {error ? (
-            <p className="text-red-500 text-center">{error}</p>
+            <p className="text-red-500 text-center">{error.message}</p>
           ) : (
             <table className="table-auto w-full mb-5">
               <thead>

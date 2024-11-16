@@ -22,7 +22,7 @@ const Navbar = () => {
 
         {/* Organization Name */}
         <h1 className="text-gray-200 text-2xl md:text-3xl font-bold font-mono mx-5 flex-grow">
-          Ikara Da'awah Foundation
+          <span className="text-green-600">Ikara Da'awah</span> Foundation
         </h1>
 
         {/* Hamburger Icon for Mobile */}
@@ -47,7 +47,7 @@ const Navbar = () => {
         </button>
 
         {/* Links for Larger Screens */}
-        <div className="hidden md:flex space-x-4">
+        <div className="hidden md:flex space-x-4 items-center">
           {[
             "Home",
             "Videos",
@@ -56,10 +56,15 @@ const Navbar = () => {
             "News",
             "About",
             "Contact",
+            "Donate",
           ].map((item) => (
             <Link
               key={item}
-              className="text-gray-300 hover:text-white transition duration-300"
+              className={`${
+                item === "Donate"
+                  ? "bg-green-800 text-white rounded-lg px-4 py-1"
+                  : ""
+              } text-gray-300 hover:text-white transition duration-300`}
               to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
             >
               {item}
@@ -71,18 +76,34 @@ const Navbar = () => {
       {/* Dropdown Menu for Mobile */}
       <div className={`md:hidden ${isOpen ? "block" : "hidden"} bg-gray-800`}>
         <div className="space-y-2 py-2 px-4">
-          {["Home", "Videos", "Gallery", "Events", "About", "Contact"].map(
-            (item) => (
-              <Link
-                key={item}
-                className="block text-gray-300 hover:text-white transition duration-300"
-                to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                onClick={() => setIsOpen(false)} // Close menu on click
-              >
-                {item}
-              </Link>
-            )
-          )}
+          {[
+            "Home",
+            "Videos",
+            "Gallery",
+            "Events",
+            "About",
+            "Contact",
+            "Donate",
+          ].map((item) => (
+            <Link
+              key={item}
+              className={`${
+                item === "Donate"
+                  ? "bg-green-800 text-white rounded-lg px-2 -mx-2 py-1 w-max "
+                  : ""
+              } block text-gray-300 hover:text-white transition duration-300`}
+              to={
+                item === "Home"
+                  ? "/"
+                  : item === "Donate"
+                  ? "https://abu.edu.ng"
+                  : `/${item.toLowerCase()}`
+              }
+              onClick={() => setIsOpen(false)} // Close menu on click
+            >
+              {item}
+            </Link>
+          ))}
         </div>
       </div>
     </nav>
