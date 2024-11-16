@@ -20,7 +20,7 @@ const Contact = () => {
     e.preventDefault();
     axios
       .post(
-        `${process.env.NGROK_URL}/admin/dashboard/feedback/add_feedback`,
+        "http://localhost:8000/admin/dashboard/feedback/add_feedback",
         feedbackData
       )
       .then((response) => {

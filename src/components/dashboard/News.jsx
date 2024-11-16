@@ -21,7 +21,7 @@ const News = () => {
 
   useEffect(() => {
     axios
-      .get("https://0.0.0.0:8000/news/all_news")
+      .get("http://localhost:8000/news/all_news")
       .then((response) => setNews(response.data))
       .catch((error) => console.error(error));
   }, []);
@@ -49,7 +49,7 @@ const News = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`https://0.0.0.0:8000/admin/dashboard/news/delete_news/${id}`)
+      .delete(`http://localhost:8000/admin/dashboard/news/delete_news/${id}`)
       .then((response) => {
         setNews(news.filter((news) => news.id !== id));
       })
@@ -61,7 +61,7 @@ const News = () => {
     if (isEdit) {
       axios
         .put(
-          `https://0.0.0.0:8000/admin/dashboard/news/update_news/${NewsId}`,
+          `http://0.0.0.0:8000/admin/dashboard/news/update_news/${NewsId}`,
           newsData
         )
         .then((response) => {
@@ -73,7 +73,7 @@ const News = () => {
         .catch((error) => console.error(error));
     } else {
       axios
-        .post("https://0.0.0.0:8000/admin/dashboard/news/add_news", newsData)
+        .post("http://localhost:8000/admin/dashboard/news/add_news", newsData)
         .then((response) => {
           setNews([...news, response.data]);
           setShowModal(false);

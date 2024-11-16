@@ -81,7 +81,7 @@ const LandingPage = () => {
     const fetchNews = async () => {
       try {
         const response = await fetch(
-          `${process.env.NGROK_URL}/news/get_recent_news?limit=3`
+          "http://localhost:8000/news/get_recent_news?limit=3"
         );
         const data = await response.json();
         setNews(data);

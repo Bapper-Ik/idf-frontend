@@ -16,14 +16,14 @@ const EventList = () => {
 
   useEffect(() => {
     axios
-      .get("https://0.0.0.0:8000/events/all_events")
+      .get("http://localhost:8000/events/all_events")
       .then((response) => setEvents(response.data))
       .catch((error) => console.error(error));
   }, []);
 
   const handleDelete = (id) => {
     axios
-      .delete(`https://0.0.0.0:8000/admin/dashboard/event/delete_event/${id}`)
+      .delete(`http://localhost:8000/admin/dashboard/event/delete_event/${id}`)
       .then((response) => {
         setEvents(events.filter((event) => event.id !== id));
       })
@@ -46,7 +46,7 @@ const EventList = () => {
     formData.append("time", e.target.time.value);
     axios
       .put(
-        `https://0.0.0.0:8000/admin/dashboard/event/update_event/${selectedEvent.id}`,
+        `http://localhost:8000/admin/dashboard/event/update_event/${selectedEvent.id}`,
         formData,
         {
           headers: {
@@ -74,7 +74,7 @@ const EventList = () => {
     formData.append("venue", e.target.venue.value);
     formData.append("time", e.target.time.value);
     axios
-      .post("https://0.0.0.0:8000/admin/dashboard/add_event", {
+      .post("http://localhost:8000/admin/dashboard/add_event", {
         name: formData.get("event_name"),
         start_date: formData.get("start_date"),
         end_date: formData.get("end_date"),

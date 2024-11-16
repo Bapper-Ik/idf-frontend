@@ -17,7 +17,7 @@ const Images = () => {
 
   useEffect(() => {
     axios
-      .get("https://0.0.0.0:8000/gallery/all_images")
+      .get("http://localhost:8000/gallery/all_images")
       .then((response) => setImages(response.data))
       .catch((error) => {
         if (error.response) {
@@ -30,7 +30,9 @@ const Images = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`https://0.0.0.0:8000/admin/dashboard/gallery/delete_image/${id}`)
+      .delete(
+        `http://localhost:8000/admin/dashboard/gallery/delete_image/${id}`
+      )
       .then((response) => {
         setImages(images.filter((image) => image.id !== id));
       })
@@ -55,7 +57,7 @@ const Images = () => {
     formData.append("image", e.target.image.files[0]);
     formData.append("caption", e.target.caption.value);
     axios
-      .post("https://0.0.0.0:8000/admin/dashboard/add_images", formData, {
+      .post("http://localhost:8000/admin/dashboard/add_images", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -81,7 +83,7 @@ const Images = () => {
     formData.append("caption", e.target.caption.value);
     axios
       .put(
-        `https://0.0.0.0:8000/admin/dashboard/gallery/update_image/${selectedImage.id}`,
+        `http://localhost:8000/admin/dashboard/gallery/update_image/${selectedImage.id}`,
         formData,
         {
           headers: {

@@ -15,7 +15,7 @@ const Login = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        `${process.env.NGROK_URL}/admin/auth/login`,
+        "http://localhost:8000/admin/auth/login",
         {
           username,
           password,

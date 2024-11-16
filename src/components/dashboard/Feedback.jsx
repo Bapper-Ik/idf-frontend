@@ -22,7 +22,7 @@ const Feedback = () => {
 
   useEffect(() => {
     axios
-      .get("https://0.0.0.0:8000/feedback/all_feedback")
+      .get("http://localhost:8000/feedback/all_feedback")
       .then((response) => {
         setFeedback(response.data);
       })
@@ -51,7 +51,7 @@ const Feedback = () => {
   const handleDelete = (id) => {
     axios
       .delete(
-        `https://0.0.0.0:8000/admin/dashboard/feedback/delete_feedback/${id}`
+        `http://localhost:8000/admin/dashboard/feedback/delete_feedback/${id}`
       )
       .then((response) => {
         setFeedback(feedback.filter((item) => item.id !== id));
@@ -66,7 +66,7 @@ const Feedback = () => {
     if (isEdit) {
       axios
         .put(
-          `https://0.0.0.0:8000/admin/dashboard/feedback/update_feedback/${feedbackId}`,
+          `http://localhost:8000/admin/dashboard/feedback/update_feedback/${feedbackId}`,
           feedbackData
         )
         .then((response) => {
@@ -83,7 +83,7 @@ const Feedback = () => {
     } else {
       axios
         .post(
-          "https://0.0.0.0:8000/admin/dashboard/feedback/add_feedback",
+          "http://localhost:8000/admin/dashboard/feedback/add_feedback",
           feedbackData
         )
         .then((response) => {
