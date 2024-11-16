@@ -58,7 +58,7 @@ const CategoryList = () => {
     if (isEdit) {
       axios
         .put(
-          `http://0.0.0.0:8000/admin/dashboard/category/update_category/${categoryId}`,
+          `http://localhost:8000/admin/dashboard/category/update_category/${categoryId}`,
           categoryData
         )
         .then((response) => {

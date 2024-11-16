@@ -63,7 +63,7 @@ const Committees = () => {
     if (isEdit) {
       axios
         .put(
-          `http://0.0.0.0:8000/admin/dashboard/committee/update_committee/${committeeId}`,
+          `http://localhost:8000/admin/dashboard/committee/update_committee/${committeeId}`,
           committeeData
         )
         .then((response) => {

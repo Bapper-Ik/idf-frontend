@@ -61,7 +61,7 @@ const News = () => {
     if (isEdit) {
       axios
         .put(
-          `http://0.0.0.0:8000/admin/dashboard/news/update_news/${NewsId}`,
+          `http://localhost:8000/admin/dashboard/news/update_news/${NewsId}`,
           newsData
         )
         .then((response) => {
