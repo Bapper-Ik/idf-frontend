@@ -28,10 +28,7 @@ function App() {
         element={
           <Layout>
             <Routes>
-              <Route
-                path="https://ikaradaawahfoundation.netlify.app"
-                element={<LandingPage />}
-              />
+              <Route path="/" element={<LandingPage />} />
               <Route path="/videos" element={<VideoCategories />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/events" element={<Events />} />
