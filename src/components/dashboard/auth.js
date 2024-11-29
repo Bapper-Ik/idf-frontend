@@ -8,7 +8,7 @@ const verifyToken = async () => {
 
   try {
     const response = await axios.post(
-      `http://localhost:8000/admin/auth/verify-token?token=${token}`
+      `https://idf-site.onrender.com/admin/auth/verify-token?token=${token}`
     );
     return response.data.valid;
   } catch (error) {

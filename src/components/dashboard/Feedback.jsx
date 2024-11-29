@@ -22,7 +22,7 @@ const Feedback = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/feedback/all_feedback")
+      .get("https://idf-site.onrender.com/feedback/all_feedback")
       .then((response) => {
         setFeedback(response.data);
       })
@@ -51,7 +51,7 @@ const Feedback = () => {
   const handleDelete = (id) => {
     axios
       .delete(
-        `http://localhost:8000/admin/dashboard/feedback/delete_feedback/${id}`
+        `https://idf-site.onrender.com/admin/dashboard/feedback/delete_feedback/${id}`
       )
       .then((response) => {
         setFeedback(feedback.filter((item) => item.id !== id));
@@ -66,7 +66,7 @@ const Feedback = () => {
     if (isEdit) {
       axios
         .put(
-          `http://localhost:8000/admin/dashboard/feedback/update_feedback/${feedbackId}`,
+          `https://idf-site.onrender.com/admin/dashboard/feedback/update_feedback/${feedbackId}`,
           feedbackData
         )
         .then((response) => {
@@ -83,7 +83,7 @@ const Feedback = () => {
     } else {
       axios
         .post(
-          "http://localhost:8000/admin/dashboard/feedback/add_feedback",
+          "https://idf-site.onrender.com/admin/dashboard/feedback/add_feedback",
           feedbackData
         )
         .then((response) => {

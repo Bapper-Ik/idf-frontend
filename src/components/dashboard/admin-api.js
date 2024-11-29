@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "https://idf-site.onrender.com",
 });
 
 export const getCategories = () => api.get("/taalim/categories/all_categories");
@@ -18,7 +18,7 @@ export const createVideo = (data) =>
 export const updateVideo = (id, data) =>
   api.put(`/admin/dashboard/taalim/update_taalim/${id}`, data);
 export const deleteVideo = (id) =>
-  api.delete(`//admin/dashboard/taalim/delete_ta_alim//${id}`);
+  api.delete(`/admin/dashboard/taalim/delete_ta_alim//${id}`);
 
 export const getImages = () => api.get("/gallery/all_images");
 export const createImage = (data) =>

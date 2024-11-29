@@ -22,7 +22,7 @@ const AdminDashboard = () => {
       try {
         // Fetch categories
         const categoryResponse = await fetch(
-          "http://localhost:8000/taalim/categories/all_categories"
+          "https://idf-site.onrender.com/taalim/categories/all_categories"
         );
 
         if (categoryResponse.status === 404) {
@@ -33,7 +33,7 @@ const AdminDashboard = () => {
 
         // Fetch videos
         const videoResponse = await fetch(
-          "http://localhost:8000/taalim/all_ta_alims"
+          "https://idf-site.onrender.com/taalim/all_ta_alims"
         );
         if (videoResponse.status == "404") {
           setVideos([]);
@@ -44,7 +44,7 @@ const AdminDashboard = () => {
 
         // Fetch images
         const imageResponse = await fetch(
-          "http://localhost:8000/gallery/all_images"
+          "https://idf-site.onrender.com/gallery/all_images"
         );
         if (imageResponse.status == "404") {
           setImages([]);
@@ -55,7 +55,7 @@ const AdminDashboard = () => {
 
         // Fetch committees
         const committeeResponse = await fetch(
-          "http://localhost:8000/committee/all_committee"
+          "https://idf-site.onrender.com/committee/all_committee"
         );
         if (committeeResponse.status == "404") {
           setCommittees([]);
@@ -66,7 +66,7 @@ const AdminDashboard = () => {
 
         // Fetch events
         const eventResponse = await fetch(
-          "http://localhost:8000/events/all_events"
+          "https://idf-site.onrender.com/events/all_events"
         );
         if (eventResponse.status == "404") {
           setEvents([]);
@@ -76,7 +76,7 @@ const AdminDashboard = () => {
         }
 
         // Fetch news
-        const newsResponse = await fetch("http://localhost:8000/news/all_news");
+        const newsResponse = await fetch("https://idf-site.onrender.com/news/all_news");
         if (newsResponse.status == "404") {
           setNews("");
         } else {
@@ -86,7 +86,7 @@ const AdminDashboard = () => {
 
         // Fetch feedback
         const feedbackResponse = await fetch(
-          "http://localhost:8000/feedback/all_feedback"
+          "https://idf-site.onrender.com/feedback/all_feedback"
         );
 
         if (feedbackResponse.status == "404") {
