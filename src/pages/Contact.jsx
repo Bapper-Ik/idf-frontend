@@ -20,7 +20,7 @@ const Contact = () => {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:8000/admin/dashboard/feedback/add_feedback",
+        "https://idf-site.onrender.com/admin/dashboard/feedback/add_feedback",
         feedbackData
       )
       .then((response) => {

@@ -18,7 +18,7 @@ const VideoCategories = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/taalim/categories/all_categories"
+          "https://idf-site.onrender.com/taalim/categories/all_categories"
         );
         setCategories(response.data);
       } catch (error) {
@@ -34,7 +34,7 @@ const VideoCategories = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:8000/taalim/${selectedCategory.id}/all_taalims`
+          `https://idf-site.onrender.com/taalim/${selectedCategory.id}/all_taalims`
         );
         setVideos(response.data);
       } catch (error) {
