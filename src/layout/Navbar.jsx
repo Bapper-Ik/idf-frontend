@@ -96,7 +96,7 @@ const Navbar = () => {
                 item === "Home"
                   ? "/"
                   : item === "Donate"
-                  ? "https://abu.edu.ng"
+                  ? "https://sandbox.flutterwave.com/pay/j4lnlwwk0yhp"
                   : `/${item.toLowerCase()}`
               }
               onClick={() => setIsOpen(false)} // Close menu on click

@@ -192,7 +192,7 @@ const AboutUs = () => {
             serve the community.
           </p>
           <Link
-            to="#"
+            to="https://sandbox.flutterwave.com/pay/j4lnlwwk0yhp"
             className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-full text-lg transition duration-300"
           >
             Donate
