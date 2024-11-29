@@ -8,7 +8,7 @@ const Gallery = () => {
     const fetchImages = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8000/gallery/all_images"
+          "https://idf-site.onrender.com/gallery/all_images"
         );
         if (response.status === 404) {
           throw new Error("No image is available!");
@@ -39,7 +39,7 @@ const Gallery = () => {
           >
             {image.id ? (
               <img
-                src={`http://localhost:8000/images/${image.id}`}
+                src={`https://idf-site.onrender.com/images/${image.id}`}
                 alt={image.title}
                 className="w-full h-auto object-contain"
               />

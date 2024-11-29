@@ -22,7 +22,7 @@ const AdminDashboard = () => {
       try {
         // Fetch categories
         const categoryResponse = await fetch(
-          "https://0.0.0.0:8000/taalim/categories/all_categories"
+          "http://localhost:8000/taalim/categories/all_categories"
         );
 
         if (categoryResponse.status === 404) {
@@ -33,7 +33,7 @@ const AdminDashboard = () => {
 
         // Fetch videos
         const videoResponse = await fetch(
-          "https://0.0.0.0:8000/taalim/all_ta_alims"
+          "http://localhost:8000/taalim/all_ta_alims"
         );
         if (videoResponse.status == "404") {
           setVideos([]);
@@ -44,7 +44,7 @@ const AdminDashboard = () => {
 
         // Fetch images
         const imageResponse = await fetch(
-          "https://0.0.0.0:8000/gallery/all_images"
+          "http://localhost:8000/gallery/all_images"
         );
         if (imageResponse.status == "404") {
           setImages([]);
@@ -55,7 +55,7 @@ const AdminDashboard = () => {
 
         // Fetch committees
         const committeeResponse = await fetch(
-          "https://0.0.0.0:8000/committee/all_committee"
+          "http://localhost:8000/committee/all_committee"
         );
         if (committeeResponse.status == "404") {
           setCommittees([]);
@@ -66,7 +66,7 @@ const AdminDashboard = () => {
 
         // Fetch events
         const eventResponse = await fetch(
-          "https://0.0.0.0:8000/events/all_events"
+          "http://localhost:8000/events/all_events"
         );
         if (eventResponse.status == "404") {
           setEvents([]);
@@ -76,7 +76,7 @@ const AdminDashboard = () => {
         }
 
         // Fetch news
-        const newsResponse = await fetch("https://0.0.0.0:8000/news/all_news");
+        const newsResponse = await fetch("http://localhost:8000/news/all_news");
         if (newsResponse.status == "404") {
           setNews("");
         } else {
@@ -86,7 +86,7 @@ const AdminDashboard = () => {
 
         // Fetch feedback
         const feedbackResponse = await fetch(
-          "https://0.0.0.0:8000/feedback/all_feedback"
+          "http://localhost:8000/feedback/all_feedback"
         );
 
         if (feedbackResponse.status == "404") {
@@ -116,15 +116,15 @@ const AdminDashboard = () => {
         <div className="flex-1 p-10 overflow-scroll">
           <h1 className="text-3xl font-bold mb-4 inline-block">
             Admin Dashboard
+            <span className="absolute right-10">
+              <button
+                className="text-sm bg-red-500 p-4 text-gray-100 rounded-lg font-bold"
+                onClick={handleLogout}
+              >
+                Log out
+              </button>
+            </span>
           </h1>
-          <span className="absolute right-10">
-            <button
-              className="bg-red-500 p-4 text-gray-100 rounded-lg font-bold"
-              onClick={handleLogout}
-            >
-              Log out
-            </button>
-          </span>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Categories */}
             <div className="bg-white rounded-lg shadow-lg p-6">
