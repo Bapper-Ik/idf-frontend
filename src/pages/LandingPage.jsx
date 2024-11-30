@@ -264,13 +264,10 @@ const LandingPage = () => {
                   className="bg-gray-100 p-6 rounded-lg shadow-lg"
                 >
                   <h3 className="text-2xl font-bold text-gray-800 mb-2">
-                    Ramadan Outreach Program
+                    {item.headline}
                   </h3>
-                  <p className="text-gray-600 mb-4">
-                    We successfully distributed food and resources to families
-                    in need during the holy month of Ramadan.
-                  </p>
-                  <Link to="/news/ramadan-outreach" className="text-green-900">
+                  <p className="text-gray-600 mb-4">{item.details}</p>
+                  <Link to="/news" className="text-green-900">
                     Read More
                   </Link>
                 </div>
