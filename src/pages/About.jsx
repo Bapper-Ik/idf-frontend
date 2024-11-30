@@ -10,7 +10,7 @@ const AboutUs = () => {
           <h2 className="text-4xl font-bold text-white mb-4">About Us</h2>
           <p className="texr-lg sm:text-3xl text-green-300 px-3 mb-8 text-center">
             The nature of IKARA DA'AWA FOUNDATION is a non-profitable and
-            political organization, but purely religious, humanitarian and
+            non-political organization, but purely religious, humanitarian and
             charitable in nature
           </p>
           <span className="uppercase text-gray-100 text-center block text-2xl font-mono">

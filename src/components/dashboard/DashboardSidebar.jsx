@@ -11,11 +11,7 @@ const DashboardSidebar = () => {
 
   return (
     <div className="max-w-fit bg-gray-900 h-screen p-4 top-31 z-0 lg:w-64 xl:w-80">
-      <h2
-        className={`${
-          isOpen ? "hidden" : ""
-        } text-lg font-bold text-white mb-4 lg:hidden`}
-      >
+      <h2 className={`${!isOpen ? "hidden" : ""} text-xl text-white mb-4`}>
         Dashboard
       </h2>
       <div className="lg:hidden">
