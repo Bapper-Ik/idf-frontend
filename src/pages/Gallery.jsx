@@ -10,7 +10,9 @@ const Gallery = () => {
         const response = await fetch(
           "https://idf-site.onrender.com/gallery/all_images"
         );
-     
+        if (response.status === 404) {
+          throw new Error("No image is available!");
+        }
 
         const data = await response.json();
         setImages(data);
