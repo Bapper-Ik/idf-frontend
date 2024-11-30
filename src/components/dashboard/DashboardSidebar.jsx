@@ -11,12 +11,16 @@ const DashboardSidebar = () => {
 
   return (
     <div className="max-w-fit bg-gray-900 h-screen p-4 top-31 z-0 lg:w-64 xl:w-80">
-      <h2 className={`${!isOpen ? "hidden" : ""} text-xl text-white mb-4`}>
-        Dashboard
-      </h2>
-      <div className="lg:hidden">
+      <div className="flex items-center lg:hidden">
+        <h2
+          className={`${
+            !isOpen ? "hidden" : "pr-10 block"
+          } text-2xl text-white font-mono `}
+        >
+          Dashboard
+        </h2>
         <button
-          className="flex items-center px-3 py-2 rounded text-black-500 hover:text-black-400"
+          className="flex items-center py-2 rounded text-black-500 hover:text-black-400"
           onClick={toggleMenu}
         >
           <svg
@@ -35,7 +39,7 @@ const DashboardSidebar = () => {
           </svg>
         </button>
       </div>
-      <div className={`lg:block ${isOpen ? "block" : "hidden"}`}>
+      <div className={`lg:block ${isOpen ? "block" : "hidden"} my-8`}>
         <ul>
           <li className="mb-4 flex items-center">
             <svg

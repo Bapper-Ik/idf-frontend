@@ -11,6 +11,8 @@ const Contact = () => {
   const [error, setError] = useState(null);
   const [res, setRes] = useState(false);
 
+  const base_url = "https://idf-site.onrender.com";
+
   axios.defaults.headers.common[
     "Authorization"
   ] = `Bearer ${localStorage.getItem("adminToken")}`;
@@ -19,10 +21,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(
-        "https://idf-site.onrender.com/admin/dashboard/feedback/add_feedback",
-        feedbackData
-      )
+      .post(base_url + "/admin/dashboard/feedback/add_feedback", feedbackData)
       .then((response) => {
         setRes(true);
         feedbackData.name = "";

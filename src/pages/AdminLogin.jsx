@@ -9,13 +9,14 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
+  const base_url = "https://idf-site.onrender.com";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "https://idf-site.onrender.com/admin/auth/login",
+        base_url + "/admin/auth/login",
         {
           username,
           password,

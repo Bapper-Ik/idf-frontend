@@ -3,13 +3,12 @@ import React, { useEffect, useState } from "react";
 const News = () => {
   const [news, setNews] = useState([]);
   const [error, setError] = useState(null);
+  const base_url = "https://idf-site.onrender.com";
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "https://idf-site.onrender.com/news/all_news"
-        );
+        const response = await fetch(base_url + "/news/all_news");
         if (response.status === 404) {
           throw new Error("No news is available!");
         }

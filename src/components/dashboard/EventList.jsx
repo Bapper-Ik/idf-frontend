@@ -8,22 +8,25 @@ const EventList = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [addEventModal, setAddEventModal] = useState(false);
+  
+  const base_url = "https://idf-site.onrender.com";
 
   axios.defaults.headers.common[
     "Authorization"
   ] = `Bearer ${localStorage.getItem("adminToken")}`;
   axios.defaults.headers.post["Content-Type"] = "application/json";
 
+
   useEffect(() => {
     axios
-      .get("https://idf-site.onrender.com/events/all_events")
+      .get(base_url + "/events/all_events")
       .then((response) => setEvents(response.data))
       .catch((error) => console.error(error));
   }, []);
 
   const handleDelete = (id) => {
     axios
-      .delete(`https://idf-site.onrender.com/admin/dashboard/event/delete_event/${id}`)
+      .delete(base_url + `/admin/dashboard/event/delete_event/${id}`)
       .then((response) => {
         setEvents(events.filter((event) => event.id !== id));
       })
@@ -46,7 +49,7 @@ const EventList = () => {
     formData.append("time", e.target.time.value);
     axios
       .put(
-        `https://idf-site.onrender.com/admin/dashboard/event/update_event/${selectedEvent.id}`,
+        base_url + `/admin/dashboard/event/update_event/${selectedEvent.id}`,
         formData,
         {
           headers: {
@@ -74,7 +77,7 @@ const EventList = () => {
     formData.append("venue", e.target.venue.value);
     formData.append("time", e.target.time.value);
     axios
-      .post("https://idf-site.onrender.com/admin/dashboard/add_event", {
+      .post(base_url + "/admin/dashboard/add_event", {
         name: formData.get("event_name"),
         start_date: formData.get("start_date"),
         end_date: formData.get("end_date"),

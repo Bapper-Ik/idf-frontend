@@ -10,6 +10,8 @@ const Images = () => {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(null);
 
+  const base_url = "https://idf-site.onrender.com";
+
   axios.defaults.headers.common[
     "Authorization"
   ] = `Bearer ${localStorage.getItem("adminToken")}`;
@@ -17,7 +19,7 @@ const Images = () => {
 
   useEffect(() => {
     axios
-      .get("https://idf-site.onrender.com/gallery/all_images")
+      .get(base_url + "/gallery/all_images")
       .then((response) => setImages(response.data))
       .catch((error) => {
         if (error.response) {
@@ -30,9 +32,7 @@ const Images = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(
-        `https://idf-site.onrender.com/admin/dashboard/gallery/delete_image/${id}`
-      )
+      .delete(base_url + `/admin/dashboard/gallery/delete_image/${id}`)
       .then((response) => {
         setImages(images.filter((image) => image.id !== id));
       })
@@ -57,7 +57,7 @@ const Images = () => {
     formData.append("image", e.target.image.files[0]);
     formData.append("caption", e.target.caption.value);
     axios
-      .post("https://idf-site.onrender.com/admin/dashboard/add_images", formData, {
+      .post(base_url + "/admin/dashboard/add_images", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -83,7 +83,7 @@ const Images = () => {
     formData.append("caption", e.target.caption.value);
     axios
       .put(
-        `https://idf-site.onrender.com/admin/dashboard/gallery/update_image/${selectedImage.id}`,
+        base_url + `/admin/dashboard/gallery/update_image/${selectedImage.id}`,
         formData,
         {
           headers: {

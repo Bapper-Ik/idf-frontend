@@ -14,13 +14,16 @@ const VideoCategories = () => {
   const [videos, setVideos] = useState([]);
   const [catError, setCatError] = useState(null);
   const [vidError, setVidError] = useState(null);
-
+  const base_url = "https://idf-site.onrender.com";
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "https://idf-site.onrender.com/taalim/categories/all_categories"
+          base_url + "/taalim/categories/all_categories"
         );
+        if (response.status === 404) {
+          throw new Error("No category is available!");
+        }
         setCategories(response.data);
       } catch (error) {
         setCatError(error.message);
@@ -54,13 +57,12 @@ const VideoCategories = () => {
     <div className="p-4 bg-gray-100">
       <h1 className="text-3xl font-bold text-center mb-8">Video Categories</h1>
 
+      {catError && (
+        <div className="bg-gray-200 text-red-500 font-bold shadow-md p-4 text-center rounded-lg w-max mx-auto mb-10">
+          {catError}
+        </div>
+      )}
       <div className="flex flex-wrap justify-center gap-4 mb-8">
-        {catError && (
-          <div className="bg-gray-200 text-red-500 font-bold shadow-md p-4 text-center rounded-lg w-max mx-auto mb-10">
-            {error}
-          </div>
-        )}
-
         {categories.map((category) => (
           <button
             key={category.id}

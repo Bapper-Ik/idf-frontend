@@ -3,14 +3,11 @@ import React, { useEffect, useState } from "react";
 const Events = () => {
   const [events, setEvents] = useState([]);
   const [error, setError] = useState(null);
-
+  const base_url = "https://idf-site.onrender.com";
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          //   "https://idf-site.onrender.com/events/all_events"
-          "http://localhost:8000/events/all_events"
-        );
+        const response = await fetch(base_url + "/events/all_events");
         if (response.status === 404) {
           throw new Error("No event is available!");
         }

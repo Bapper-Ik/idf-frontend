@@ -16,6 +16,8 @@ const VideoList = () => {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
 
+  const base_url = "https://idf-site.onrender.com";
+
   axios.defaults.headers.common[
     "Authorization"
   ] = `Bearer ${localStorage.getItem("adminToken")}`;
@@ -23,12 +25,12 @@ const VideoList = () => {
 
   useEffect(() => {
     axios
-      .get("https://idf-site.onrender.com/taalim/all_ta_alims")
+      .get(base_url + "/taalim/all_ta_alims")
       .then((response) => setVideos(response.data))
       .catch((error) => console.error(error));
 
     axios
-      .get("https://idf-site.onrender.com/taalim/categories/all_categories")
+      .get(base_url + "/taalim/categories/all_categories")
       .then((response) => setCategories(response.data))
       .catch((error) => console.error(error));
   }, []);
@@ -55,9 +57,7 @@ const VideoList = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(
-        `https://idf-site.onrender.com/admin/dashboard/taalim/delete_ta_alim/${id}`
-      )
+      .delete(base_url + `/admin/dashboard/taalim/delete_ta_alim/${id}`)
       .then((response) => {
         setVideos(videos.filter((video) => video.id !== id));
       })
@@ -75,7 +75,7 @@ const VideoList = () => {
     if (isEdit) {
       axios
         .put(
-          `https://idf-site.onrender.com/admin/dashboard/taalim/update_taalim/${videoId}`,
+          base_url + `/admin/dashboard/taalim/update_taalim/${videoId}`,
           videoData
         )
         .then((response) => {
@@ -95,10 +95,7 @@ const VideoList = () => {
         });
     } else {
       axios
-        .post(
-          "https://idf-site.onrender.com/admin/dashboard/ta_alim/add_ta_alim",
-          videoData
-        )
+        .post(base_url + "/admin/dashboard/ta_alim/add_ta_alim", videoData)
         .then((response) => {
           setVideos([...videos, response.data]);
           setShowModal(false);

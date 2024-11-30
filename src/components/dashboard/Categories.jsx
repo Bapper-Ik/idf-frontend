@@ -18,9 +18,11 @@ const CategoryList = () => {
   ] = `Bearer ${localStorage.getItem("adminToken")}`;
   axios.defaults.headers.post["Content-Type"] = "application/json";
 
+  const base_url = "https://idf-site.onrender.com";
+
   useEffect(() => {
     axios
-      .get("https://idf-site.onrender.com/taalim/categories/all_categories")
+      .get(base_url + "/taalim/categories/all_categories")
       .then((response) => setCategories(response.data))
       .catch((error) => setError(error));
   }, []);
@@ -44,9 +46,7 @@ const CategoryList = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(
-        `https://idf-site.onrender.com/admin/dashboard/category/delete_category/${id}`
-      )
+      .delete(base_url + `/admin/dashboard/category/delete_category/${id}`)
       .then((response) => {
         setCategories(categories.filter((category) => category.id !== id));
       })
@@ -58,7 +58,7 @@ const CategoryList = () => {
     if (isEdit) {
       axios
         .put(
-          `https://idf-site.onrender.com/admin/dashboard/category/update_category/${categoryId}`,
+          base_url + `/admin/dashboard/category/update_category/${categoryId}`,
           categoryData
         )
         .then((response) => {
@@ -72,10 +72,7 @@ const CategoryList = () => {
         .catch((error) => setError(error));
     } else {
       axios
-        .post(
-          "https://idf-site.onrender.com/admin/dashboard/category/add_category",
-          categoryData
-        )
+        .post(base_url + "/admin/dashboard/category/add_category", categoryData)
         .then((response) => {
           setCategories([...categories, response.data]);
           setShowModal(false);

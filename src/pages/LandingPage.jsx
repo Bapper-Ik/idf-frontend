@@ -75,13 +75,14 @@ const LandingPage = () => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [news, setNews] = useState([]);
+  const base_url = "https://idf-site.onrender.com";
 
   // Fetch the recent news from the backend API
   useEffect(() => {
     const fetchNews = async () => {
       try {
         const response = await fetch(
-          "https://idf-site.onrender.com/news/get_recent_news?limit=3"
+          base_url + "/news/get_recent_news?limit=3"
         );
         const data = await response.json();
         setNews(data);

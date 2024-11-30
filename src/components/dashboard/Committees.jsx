@@ -14,6 +14,8 @@ const Committees = () => {
   const [committeeId, setCommitteeId] = useState(null);
   const [error, setError] = useState(null);
 
+  const base_url = "https://idf-site.onrender.com";
+
   axios.defaults.headers.common[
     "Authorization"
   ] = `Bearer ${localStorage.getItem("adminToken")}`;
@@ -21,7 +23,7 @@ const Committees = () => {
 
   useEffect(() => {
     axios
-      .get("https://idf-site.onrender.com/committee/all_committee")
+      .get(base_url + "/committee/all_committee")
       .then((response) => setCommittees(response.data))
       .catch((error) => setError(error));
   }, []);
@@ -49,9 +51,7 @@ const Committees = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(
-        `https://idf-site.onrender.com/admin/dashboard/committee/delete_committee/${id}`
-      )
+      .delete(base_url + `/admin/dashboard/committee/delete_committee/${id}`)
       .then((response) => {
         setCommittees(committees.filter((category) => category.id !== id));
       })
@@ -63,7 +63,8 @@ const Committees = () => {
     if (isEdit) {
       axios
         .put(
-          `https://idf-site.onrender.com/admin/dashboard/committee/update_committee/${committeeId}`,
+          base_url +
+            `/admin/dashboard/committee/update_committee/${committeeId}`,
           committeeData
         )
         .then((response) => {
@@ -77,10 +78,7 @@ const Committees = () => {
         .catch((error) => setError(error));
     } else {
       axios
-        .post(
-          "https://idf-site.onrender.com/admin/dashboard/add_committee",
-          committeeData
-        )
+        .post(base_url + "/admin/dashboard/add_committee", committeeData)
         .then((response) => {
           setCommittees([...committees, response.data]);
           setShowModal(false);

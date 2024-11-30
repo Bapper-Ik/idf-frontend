@@ -3,13 +3,11 @@ import React, { useEffect, useState } from "react";
 const Gallery = () => {
   const [images, setImages] = useState([]);
   const [error, setError] = useState(null);
-
+  const base_url = "https://idf-site.onrender.com";
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await fetch(
-          "https://idf-site.onrender.com/gallery/all_images"
-        );
+        const response = await fetch(base_url + "/gallery/all_images");
         if (response.status === 404) {
           throw new Error("No image is available!");
         }
@@ -39,7 +37,7 @@ const Gallery = () => {
           >
             {image.id ? (
               <img
-                src={`https://idf-site.onrender.com/images/${image.id}`}
+                src={base_url + `/images/${image.id}`}
                 alt={image.title}
                 className="w-full h-auto object-contain"
               />

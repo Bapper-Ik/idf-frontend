@@ -15,6 +15,8 @@ const Feedback = () => {
   });
   const [feedbackId, setFeedbackId] = useState(null);
 
+  const base_url = "https://idf-site.onrender.com";
+
   axios.defaults.headers.common[
     "Authorization"
   ] = `Bearer ${localStorage.getItem("adminToken")}`;
@@ -22,7 +24,7 @@ const Feedback = () => {
 
   useEffect(() => {
     axios
-      .get("https://idf-site.onrender.com/feedback/all_feedback")
+      .get(base_url + "/feedback/all_feedback")
       .then((response) => {
         setFeedback(response.data);
       })
@@ -50,9 +52,7 @@ const Feedback = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(
-        `https://idf-site.onrender.com/admin/dashboard/feedback/delete_feedback/${id}`
-      )
+      .delete(base_url + `/admin/dashboard/feedback/delete_feedback/${id}`)
       .then((response) => {
         setFeedback(feedback.filter((item) => item.id !== id));
       })
@@ -66,7 +66,7 @@ const Feedback = () => {
     if (isEdit) {
       axios
         .put(
-          `https://idf-site.onrender.com/admin/dashboard/feedback/update_feedback/${feedbackId}`,
+          base_url + `/admin/dashboard/feedback/update_feedback/${feedbackId}`,
           feedbackData
         )
         .then((response) => {
@@ -82,10 +82,7 @@ const Feedback = () => {
         });
     } else {
       axios
-        .post(
-          "https://idf-site.onrender.com/admin/dashboard/feedback/add_feedback",
-          feedbackData
-        )
+        .post(base_url + "/admin/dashboard/feedback/add_feedback", feedbackData)
         .then((response) => {
           setFeedback([...feedback, response.data]);
           setShowModal(false);
