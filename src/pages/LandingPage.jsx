@@ -187,12 +187,11 @@ const LandingPage = () => {
             Our Activities
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Video Activity */}
             <div className="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105">
               <img
                 src="/educ.jpg"
                 alt="Videos"
-                className="w-full h-48 object-cover rounded-t-lg"
+                className="w-full h-48 sm:object-cover rounded-t-lg"
               />
               <h3 className="text-2xl font-bold mt-4">
                 Islamic Educational Videos
@@ -214,7 +213,7 @@ const LandingPage = () => {
               <img
                 src="/durus.jpg"
                 alt="Gallery"
-                className="w-full h-48 object-cover rounded-t-lg"
+                className="w-full h-48 sm:object-cover rounded-t-lg"
               />
               <h3 className="text-2xl font-bold mt-4">Image Gallery</h3>
               <p className="mt-2 text-gray-600">
@@ -229,12 +228,11 @@ const LandingPage = () => {
               </Link>
             </div>
 
-            {/* Events Activity */}
             <div className="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105">
               <img
                 src="/event.jpg"
                 alt="Events"
-                className="w-full h-48 object-cover rounded-t-lg"
+                className="w-full h-48 sm:object-cover rounded-t-lg"
               />
               <h3 className="text-2xl font-bold mt-4">Upcoming Events</h3>
               <p className="mt-2 text-gray-600">
@@ -263,7 +261,7 @@ const LandingPage = () => {
                   key={item.id}
                   className="bg-gray-100 p-6 rounded-lg shadow-lg"
                 >
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                  <h3 className="text-2xl font-bold font-mono capitalize text-gray-800 mb-2">
                     {item.headline}
                   </h3>
                   <p className="text-gray-600 mb-4">{item.details}</p>
@@ -273,7 +271,7 @@ const LandingPage = () => {
                 </div>
               ))
             ) : (
-              <p className="text-center">No news available!</p>
+              <p className="text-center text-red-700">No news available!</p>
             )}
           </div>
         </div>

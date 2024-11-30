@@ -12,7 +12,8 @@ const VideoCategories = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [videos, setVideos] = useState([]);
-  const [error, setError] = useState(null);
+  const [catError, setCatError] = useState(null);
+  const [vidError, setVidError] = useState(null);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -22,7 +23,7 @@ const VideoCategories = () => {
         );
         setCategories(response.data);
       } catch (error) {
-        setError(error.message);
+        setCatError(error.message);
       }
     };
     fetchCategories();
@@ -38,7 +39,7 @@ const VideoCategories = () => {
         );
         setVideos(response.data);
       } catch (error) {
-        setError(error.message);
+        setVidError(error.message);
       }
     };
     fetchVideos();
@@ -54,6 +55,12 @@ const VideoCategories = () => {
       <h1 className="text-3xl font-bold text-center mb-8">Video Categories</h1>
 
       <div className="flex flex-wrap justify-center gap-4 mb-8">
+        {catError && (
+          <div className="bg-gray-200 text-red-500 font-bold shadow-md p-4 text-center rounded-lg w-max mx-auto mb-10">
+            {error}
+          </div>
+        )}
+
         {categories.map((category) => (
           <button
             key={category.id}
@@ -98,7 +105,6 @@ const VideoCategories = () => {
                     <h3 className="font-bold text-lg capitalize">
                       {video.name}
                     </h3>
-                    <p className="text-gray-600">{video.description}</p>
                   </div>
                 </div>
               );

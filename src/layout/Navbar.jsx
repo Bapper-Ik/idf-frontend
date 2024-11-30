@@ -65,7 +65,13 @@ const Navbar = () => {
                   ? "bg-green-800 text-white rounded-lg px-4 py-1"
                   : ""
               } text-gray-300 hover:text-white transition duration-300`}
-              to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+              to={
+                item === "Home"
+                  ? "/"
+                  : item === "Donate"
+                  ? "https://sandbox.flutterwave.com/pay/j4lnlwwk0yhp"
+                  : `/${item.toLowerCase()}`
+              }
             >
               {item}
             </Link>

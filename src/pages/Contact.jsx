@@ -34,10 +34,6 @@ const Contact = () => {
       });
   };
 
-  const handleToast = () => {
-    setRes(false);
-  };
-
   return (
     <div className="p-8 bg-gray-100">
       {res && (
