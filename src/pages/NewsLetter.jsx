@@ -7,7 +7,9 @@ const News = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/news/all_news");
+        const response = await fetch(
+          "https://idf-site.onrender.com/news/all_news"
+        );
         if (response.status === 404) {
           throw new Error("No news is available!");
         }
@@ -40,7 +42,7 @@ const News = () => {
               {item.headline}
             </blockquote>
             <p className="text-gray-600">{item.details}</p>
-            <span className="absolute bottom-0 right-2 pb-2 font-bold text-green-900">
+            <span className="absolute bottom-0 right-2 pb-2 font-bold font-mono opacity-25 text-green-900">
               Signed: Management
             </span>
           </div>

@@ -8,7 +8,7 @@ const Events = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8000/events/all_events"
+          "https://idf-site.onrender.com/events/all_events"
         );
         if (response.status === 404) {
           throw new Error("No event is available!");

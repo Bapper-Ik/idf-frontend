@@ -15,7 +15,7 @@ const Login = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:8000/admin/auth/login",
+        "https://idf-site.onrender.com/admin/auth/login",
         {
           username,
           password,

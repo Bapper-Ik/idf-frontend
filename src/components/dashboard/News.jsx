@@ -21,7 +21,7 @@ const News = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/news/all_news")
+      .get("https://idf-site.onrender.com/news/all_news")
       .then((response) => setNews(response.data))
       .catch((error) => console.error(error));
   }, []);
@@ -49,7 +49,9 @@ const News = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:8000/admin/dashboard/news/delete_news/${id}`)
+      .delete(
+        `https://idf-site.onrender.com/admin/dashboard/news/delete_news/${id}`
+      )
       .then((response) => {
         setNews(news.filter((news) => news.id !== id));
       })
@@ -61,7 +63,7 @@ const News = () => {
     if (isEdit) {
       axios
         .put(
-          `http://localhost:8000/admin/dashboard/news/update_news/${NewsId}`,
+          `https://idf-site.onrender.com/admin/dashboard/news/update_news/${NewsId}`,
           newsData
         )
         .then((response) => {
@@ -73,7 +75,10 @@ const News = () => {
         .catch((error) => console.error(error));
     } else {
       axios
-        .post("http://localhost:8000/admin/dashboard/news/add_news", newsData)
+        .post(
+          "https://idf-site.onrender.com/admin/dashboard/news/add_news",
+          newsData
+        )
         .then((response) => {
           setNews([...news, response.data]);
           setShowModal(false);

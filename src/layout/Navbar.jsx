@@ -52,8 +52,8 @@ const Navbar = () => {
             "Home",
             "Videos",
             "Gallery",
-            "Events",
             "News",
+            "Events",
             "About",
             "Contact",
             "Donate",
@@ -65,7 +65,13 @@ const Navbar = () => {
                   ? "bg-green-800 text-white rounded-lg px-4 py-1"
                   : ""
               } text-gray-300 hover:text-white transition duration-300`}
-              to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+              to={
+                item === "Home"
+                  ? "/"
+                  : item === "Donate"
+                  ? "https://sandbox.flutterwave.com/pay/j4lnlwwk0yhp"
+                  : `/${item.toLowerCase()}`
+              }
             >
               {item}
             </Link>
@@ -80,6 +86,7 @@ const Navbar = () => {
             "Home",
             "Videos",
             "Gallery",
+            "News",
             "Events",
             "About",
             "Contact",
@@ -96,7 +103,7 @@ const Navbar = () => {
                 item === "Home"
                   ? "/"
                   : item === "Donate"
-                  ? "https://abu.edu.ng"
+                  ? "https://sandbox.flutterwave.com/pay/j4lnlwwk0yhp"
                   : `/${item.toLowerCase()}`
               }
               onClick={() => setIsOpen(false)} // Close menu on click
