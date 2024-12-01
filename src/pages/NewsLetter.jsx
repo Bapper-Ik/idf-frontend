@@ -41,7 +41,7 @@ const News = () => {
               {item.headline}
             </blockquote>
             <p className="text-gray-600">{item.details}</p>
-            <span className="absolute bottom-0 right-2 pb-2 font-bold font-mono opacity-25 text-green-900">
+            <span className="absolute bottom-0 right-2 pb-2 font-bold font-mono opacity-70 text-green-900">
               Signed: Management
             </span>
           </div>

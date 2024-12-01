@@ -4,6 +4,7 @@ const Events = () => {
   const [events, setEvents] = useState([]);
   const [error, setError] = useState(null);
   const base_url = "https://idf-site.onrender.com";
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -36,8 +37,15 @@ const Events = () => {
             key={event.id}
             className="bg-white p-6 mb-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
           >
-            <h3 className="text-2xl text-green-900 capitalize underline font-semibold pb-2">
+            <h3 className="relative text-2xl text-green-900 capitalize underline font-semibold pb-2">
               {event.name}
+              <span
+                className={`${
+                  event.isCompleted ? "text-red-700" : "text-green-900"
+                } absolute right-0 text-sm px-0`}
+              >
+                {event.isCompleted ? "Ended" : "Ongoing"}
+              </span>
             </h3>
             <p className="text-gray-600">Start Date: {event.start_date}</p>
             <p className="text-gray-600">End Date: {event.end_date}</p>

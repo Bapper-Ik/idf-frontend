@@ -38,7 +38,7 @@ const VideoCategories = () => {
 
       try {
         const response = await axios.get(
-          `https://idf-site.onrender.com/taalim/${selectedCategory.id}/all_taalims`
+          base_url + `/taalim/${selectedCategory.id}/all_taalims`
         );
         setVideos(response.data);
       } catch (error) {
